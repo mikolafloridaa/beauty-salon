@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бюті</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #7a4552;
+      --muted: #8d6570;
+      --blush: #e7b7c2;
+      --rose: #b76e7d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Outfit", "Segoe UI", sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, #fff7f4 0%, transparent 42%),
+        linear-gradient(165deg, #f8efe9 0%, #f4e4ea 48%, #e7eef8 100%);
+    }
+
+    main {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 4.5rem 1.75rem 3rem;
+    }
+
+    .hero {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: 1.5rem;
+      margin: 0 0 3.75rem;
+      box-shadow: 0 18px 40px rgba(120, 86, 98, 0.16);
+    }
+
+    h2 {
+      margin: 0 0 1.15rem;
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: 2.75rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.08;
+      color: var(--ink);
+    }
+
+    main > h2:first-of-type {
+      font-size: 4.25rem;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    p,
+    .price-list,
+    .visit-button,
+    footer {
+      font-family: "Outfit", "Segoe UI", sans-serif;
+    }
+
+    p {
+      margin: 0 0 4.5rem;
+      max-width: 32rem;
+      color: var(--muted);
+    }
+
+    .price-list {
+      list-style: none;
+      margin: 2.5rem 0 0;
+      padding: 0;
+    }
+
+    .price-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      margin: 0;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid rgba(183, 110, 125, 0.16);
+    }
+
+    .price-list li:first-child {
+      padding-top: 0.35rem;
+      border-top: 1px solid rgba(183, 110, 125, 0.16);
+    }
+
+    .service {
+      flex: 0 1 auto;
+      letter-spacing: 0.02em;
+    }
+
+    .leader {
+      flex: 1 1 auto;
+      min-width: 1.5rem;
+      border-bottom: 1px dotted rgba(183, 110, 125, 0.38);
+      transform: translateY(-0.38em);
+    }
+
+    .price {
+      flex: 0 0 auto;
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .masters {
+      margin-top: 4.5rem;
+    }
+
+    .masters-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 1.25rem;
+    }
+
+    .master-card {
+      flex: 0 1 16rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: 1.65rem 1.5rem;
+      border: 1px solid rgba(231, 183, 194, 0.55);
+      border-radius: 1.35rem;
+      background: linear-gradient(180deg, rgba(255, 248, 246, 0.92) 0%, rgba(247, 226, 232, 0.72) 100%);
+      box-shadow: 0 10px 24px rgba(183, 110, 125, 0.12);
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+
+    .master-card:hover {
+      background: linear-gradient(180deg, rgba(244, 214, 220, 0.96) 0%, rgba(216, 168, 180, 0.88) 100%);
+      border-color: rgba(183, 110, 125, 0.4);
+      box-shadow: 0 12px 26px rgba(147, 85, 100, 0.2);
+    }
+
+    .master-name {
+      margin: 0 0 0.35rem;
+      font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .master-role {
+      margin: 0;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .contact {
+      margin-top: 4.5rem;
+    }
+
+    .contact-note {
+      margin: 0 0 1.5rem;
+      max-width: 32rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      max-width: 32rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .field label {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .field input {
+      width: 100%;
+      margin: 0;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid rgba(183, 110, 125, 0.28);
+      border-radius: 0.95rem;
+      background: rgba(255, 248, 246, 0.92);
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: 0.02em;
+    }
+
+    .field input:focus {
+      outline: none;
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(183, 110, 125, 0.16);
+    }
+
+    .field input::placeholder {
+      color: rgba(141, 101, 112, 0.72);
+    }
+
+    .contact-form .visit-button {
+      align-self: flex-start;
+      margin-top: 0.35rem;
+    }
+
+    .form-status {
+      margin: 0.15rem 0 0;
+      color: var(--rose);
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 640px) {
+      .masters-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .master-card {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+    }
+
+    .visit-button {
+      display: inline-block;
+      margin-top: 2.25rem;
+      padding: 1rem 2.25rem;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #c98b98 0%, #a86474 100%);
+      color: #fff;
+      font-family: "Outfit", "Segoe UI", sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(168, 100, 116, 0.28);
+      transition: background 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .visit-button:hover {
+      background: linear-gradient(180deg, #b57685 0%, #935564 100%);
+      transform: scale(1.04);
+      box-shadow: 0 14px 30px rgba(147, 85, 100, 0.34);
+    }
+
+    footer {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 0 1.75rem 3rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav></nav>
+  </header>
+
+  <main>
+    <img class="hero" src="images/salon.jpg" alt="Сучасний інтер'єр нігтьового салону">
+    <h2>Beauty</h2>
+    <p>Тут нігті, брови й макіяж складаються в спокійний, витончений образ.</p>
+    <h2>Прайс-лист</h2>
+    <ul class="price-list">
+      <li>
+        <span class="service">Манікюр з гель-лаком</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="price">850 ₴</span>
+      </li>
+      <li>
+        <span class="service">Педікюр з покриттям</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="price">1 100 ₴</span>
+      </li>
+      <li>
+        <span class="service">Корекція брів</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="price">450 ₴</span>
+      </li>
+      <li>
+        <span class="service">Макіяж</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="price">1 800 ₴</span>
+      </li>
+      <li>
+        <span class="service">Ламінування брів</span>
+        <span class="leader" aria-hidden="true"></span>
+        <span class="price">800 ₴</span>
+      </li>
+    </ul>
+    <section class="masters">
+      <h2>Наші майстри</h2>
+      <div class="masters-row">
+        <article class="master-card">
+          <h3 class="master-name">Анна</h3>
+          <p class="master-role">(Top Stylist)</p>
+        </article>
+        <article class="master-card">
+          <h3 class="master-name">Марія</h3>
+          <p class="master-role">(Visagist)</p>
+        </article>
+        <article class="master-card">
+          <h3 class="master-name">Ольга</h3>
+          <p class="master-role">(Manicure Master)</p>
+        </article>
+      </div>
+    </section>
+    <section class="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Зв'язок</h2>
+      <p class="contact-note">Напишіть адміністратору. Ми з вами зв'яжемося.</p>
+      <form class="contact-form">
+        <div class="field">
+          <label for="client-name">Ім'я</label>
+          <input id="client-name" name="name" type="text" autocomplete="name" placeholder="Заповніть поле" required>
+        </div>
+        <div class="field">
+          <label for="client-phone">Телефон</label>
+          <input id="client-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Заповніть поле" required>
+        </div>
+        <button class="visit-button" type="submit">записатися на візит</button>
+        <p class="form-status" role="status" hidden>Дякуємо. Ми скоро зателефонуємо.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    +380957032681
+  </footer>
+  <script>
+    const contactForm = document.querySelector(".contact-form");
+    const contactStatus = contactForm.querySelector(".form-status");
+    const contactFields = contactForm.querySelectorAll("input");
+    const emptyFieldMessage = "Заповніть поле";
+
+    function updateFieldMessage(field) {
+      field.setCustomValidity(field.value.trim() ? "" : emptyFieldMessage);
+    }
+
+    contactFields.forEach((field) => {
+      updateFieldMessage(field);
+      field.addEventListener("input", () => updateFieldMessage(field));
+    });
+
+    contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      contactStatus.hidden = false;
+      contactForm.reset();
+      contactFields.forEach(updateFieldMessage);
+    });
+  </script>
+</body>
+</html>
