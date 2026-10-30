@@ -270,11 +270,54 @@
       color: var(--muted);
       letter-spacing: 0.04em;
     }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 2;
+      padding: 0.7rem 1.15rem;
+      border: 1px solid rgba(183, 110, 125, 0.35);
+      border-radius: 999px;
+      background: rgba(255, 248, 246, 0.92);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(120, 86, 98, 0.12);
+    }
+
+    body.theme-dark {
+      --ink: #f8e8ec;
+      --muted: #e4c3cb;
+      --rose: #f0b7c4;
+      background:
+        radial-gradient(circle at top left, #4a3038 0%, transparent 42%),
+        linear-gradient(165deg, #24181c 0%, #3a242c 52%, #1c2433 100%);
+    }
+
+    body.theme-dark .master-card {
+      background: linear-gradient(180deg, rgba(58, 36, 44, 0.92) 0%, rgba(36, 24, 28, 0.9) 100%);
+      border-color: rgba(240, 183, 196, 0.28);
+    }
+
+    body.theme-dark .field input,
+    body.theme-dark .theme-toggle {
+      background: rgba(36, 24, 28, 0.92);
+      color: var(--ink);
+      border-color: rgba(240, 183, 196, 0.35);
+    }
+
+    body.theme-dark .field input::placeholder {
+      color: rgba(228, 195, 203, 0.7);
+    }
   </style>
 </head>
 <body>
   <header>
-    <nav></nav>
+    <button class="theme-toggle" type="button" aria-pressed="false">Темна тема</button>
   </header>
 
   <main>
@@ -348,6 +391,20 @@
     +380957032681
   </footer>
   <script>
+    const themeButton = document.querySelector(".theme-toggle");
+
+    function applyTheme(isDark) {
+      document.body.classList.toggle("theme-dark", isDark);
+      themeButton.setAttribute("aria-pressed", String(isDark));
+      themeButton.textContent = isDark ? "Світла тема" : "Темна тема";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+
+    applyTheme(localStorage.getItem("theme") === "dark");
+    themeButton.addEventListener("click", () => {
+      applyTheme(!document.body.classList.contains("theme-dark"));
+    });
+
     const contactForm = document.querySelector(".contact-form");
     const contactStatus = contactForm.querySelector(".form-status");
     const contactFields = contactForm.querySelectorAll("input");
